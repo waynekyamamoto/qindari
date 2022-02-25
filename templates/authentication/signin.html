@@ -1,0 +1,51 @@
+{% extends 'base_generic.html' %}
+  {% block sidebar %}
+    {# We build a special sidebar beasause user is not logged in but attempting to do so #}
+    {% url 'home' as home %}
+    {% url 'about' as about %}
+    {% url 'blog' as blog %}
+    {% url 'contact' as contact %}
+    {% url 'signin' as signin %}
+    {% url 'signout' as signout %}
+    <a href= "{{ home }}">Home</a>
+    <a href= "{{ about }}">About</a>
+    <a href= "{{ blog }}">Blog</a>
+    <a href= "{{ contact }}">Contact</a>
+  {% endblock %}
+
+
+
+<body>
+    {% block content %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+
+    <h3>Log In to your account!</h3>
+    <form method="post" action="/signin" class="mb-2">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Your Username" Required>
+        </div>
+        <div class="form-group">
+            <label for="pass1">Password</label>
+             <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
+             (<a href="password_change_request">Forget Password?</a>)
+        </div>
+
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+
+    {% url 'signup' as signup %}
+
+    Don't have an account? Sign Up <a href={{ signup }}> here</a>!
+    {% endblock %}
+
+</body>
+</html>

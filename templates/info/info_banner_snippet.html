@@ -1,0 +1,22 @@
+{% url 'home' as home %}
+{% url 'about' as about %}
+{% url 'blog' as blog %}
+{% url 'contact' as contact %}
+{% url 'signin' as signin %}
+{% url 'signout' as signout %}
+{% url 'signup' as signup %}
+{% url 'dashboard' as dashboard %}
+<a href= "{{ home }}">Home</a>
+<a href= "{{ about }}">About</a>
+<a href= "{{ blog }}">Blog</a>
+<a href= "{{ contact }}">Contact</a>
+
+{% if request.user.is_authenticated %}
+    <a href= "{{ dashboard }}">Dashboard</a>
+    <a href= "{{ signout }}">Logout</a>
+{% else %}
+    <a href= "{{ signin }}">Login In</a>
+    <a href= "{{ signup }}">Register</a>
+{% endif %}
+
+
