@@ -119,7 +119,7 @@ def signin(request):
     
     return render(request, "authentication/signin.html")
 
-
+@login_required
 def signout(request):
     logout(request)
     messages.success(request, "Logged Out Successfully!!")

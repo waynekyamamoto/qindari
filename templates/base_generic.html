@@ -1,11 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   {% block title %}<title>Qindari</title>{% endblock %}
+
+<link href="{% static 'qindari/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
-  <center><h1>Qindari: Helping Creators Be Successful</h1></center>
   {% block sidebar %}{% include 'banner_snippet.html' %} {% endblock %}
+  <center><img src="{% static 'qindari/images/q.jpg' %}" alt="My image"></center>
   {% block content %}<!-- default content text (typically empty) -->{% endblock %}
 </body>
 </html>
