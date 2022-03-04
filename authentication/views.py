@@ -77,7 +77,7 @@ def signup(request):
         print("Sending confirmation email")
         email.send()
         
-        return redirect('signin')
+        return render(request, "authentication/signup_accepted.html")
         
         
     return render(request, "authentication/signup.html")
